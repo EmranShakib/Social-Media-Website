@@ -22,7 +22,14 @@ Route::get('/create', function () {
     return view('Frontpage/frontpage');
 });
 
+Route::get('/main', function () {
+    return view('Frontpage/mainpage');
+});
 
+// Route::get('/viewpost', function () {
+//     return view('Frontpage/viewpage');
+// });
 
-
-
+Route::get('viewpage', function () {
+    return view('Frontpage/viewpage');
+})->name('viewpage');
