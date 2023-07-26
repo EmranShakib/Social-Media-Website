@@ -49,9 +49,11 @@
                                         you spent your weekends, holidays and time. A social network that<br>
                                         enhances real life connections you have with people you love</p>
                                     <div class="d-flex gap-2">
-                                        <button class="btn btn-dark btn-sm">Sign in to Wayzaway</button>
-                                        <button class="btn btn-danger btn-sm ">Join
-                                            Wayzaway</button>
+                                        <a href="{{ route('login.page') }}" class="btn btn-dark btn-sm">Sign in to
+                                            Wayzaway</a>
+
+                                        <a href="{{ route('register.page') }}" class="btn btn-danger btn-sm">oin
+                                            Wayzaway</a>
                                     </div>
 
                                 </div>
@@ -90,7 +92,8 @@
                     <div class="row">
 
                         <div class="col-md-5">
-                            <img src="motorhome.png" alt="" style="height:260px; width: 260px; padding-left:40px; ">
+                            <img src="motorhome.png" alt=""
+                                style="height:260px; width: 260px; padding-left:40px; ">
                         </div>
                         <div class="col-md-5">
 
@@ -188,7 +191,8 @@
                         <div class="card-body" style="color:black; padding-top:60px; padding-left:120px;"> -->
                     <div class="row">
                         <div class="col-md-7" style="padding-left:400px;">
-                            <img src="{{ asset('img/Wayzaway_logo.png') }}" alt="" style="width: 200px;height:50px; ">
+                            <img src="{{ asset('img/Wayzaway_logo.png') }}" alt=""
+                                style="width: 200px;height:50px; ">
                         </div>
                         <p style="color: hsl(0, 0%, 34%);padding-left:100px;">A social network site that allows you to
                             post places
