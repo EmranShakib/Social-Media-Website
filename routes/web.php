@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Frontend\DashboardController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 use \App\Http\Controllers\Frontend\ProfileController;
+use \App\Http\Controllers\Frontend\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,6 +38,7 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard
 
 // profile
 Route::get('/profile',[ProfileController::class,'index'])->name('profile.index')->middleware('auth');
-
+Route::patch('/profile/update/{id}',[ProfileController::class,'update'])->name('profile.update')->middleware('auth');
+Route::resource('posts', PostController::class);
 
 require __DIR__.'/auth.php';

@@ -1,13 +1,17 @@
- 
  <x-frontend.layouts.master>
-    {{-- dynamic title using components --}}
-    <x-slot name="title">WayzAway-Dashboard</x-slot>
+     {{-- dynamic title using components --}}
+
+     <x-slot name="title">WayzAway-Dashboard</x-slot>
+
+     <x-alert-message.alert />
+
 
      <div class="container jsjhr">
          <div class="row skfjh">
              <div class="col-md-2 sfjhe">
                  <div class=" sjfsj">
-                     <img src="{{ asset('img/profile.jpg') }}" alt="">
+                     <img src="{{ asset('storage/image/profiles/' . Auth::user()->profile_image) }}" alt="Admin"
+                         class="rounded-circle" width="150">
                      <h5 class="text-center pt-3">
                          {{ Auth::user()->name }}
                      </h5>
@@ -47,364 +51,84 @@
                              </h6>
                          </div>
                          <div>
-                             <h6>
-                                 <i class="fas fa-book-open text-info pr-1"></i> write an article
+                             <h6 id="writeArticleHeader" style="cursor: pointer">
+                                 <i class="fas fa-book-open text-info pr-1"></i> Write an article
                              </h6>
                          </div>
                      </div>
                      <hr>
-                     <textarea name="" id="" cols="3" rows="3" class="form-control"
-                         placeholder="Write Something...."></textarea>
+                     <form action="{{ route('posts.store') }}" id="articleTextarea" style="display:none" method="POST"
+                         enctype="multipart/form-data">
+                         @csrf
+                         <input type="file" class="mb-2"name="image">
+                         <input type="text" placeholder="Enter the title" name="title">
+                         <textarea cols="3" rows="3" class="form-control" placeholder="Write Something...." name="content"></textarea>
+                         <button class="btn btn-sm btn-primary mt-2">Post</button>
+                     </form>
                  </div>
                  <div class="box1">
-                     <div class="d-flex skfjkk">
-                         <div class="lkt40">
-                             <img src="./Images/1.jpg" alt="">
+
+                     @foreach ($posts as $post)
+                         <div class="d-flex skfjkk">
+                             <div class="lkt40">
+                                 <img src="{{ asset('storage/image/profiles/' . $post->user->profile_image) }}"
+                                     alt="" class="rounded-circle" width="150">
+
+                             </div>
+                             <div class="pl-2 pt-1 row">
+                                 <h5>{{ $post->user->name }}</h5>
+
+                             </div>
+
 
                          </div>
-                         <div class="pl-2 pt-1">
-                             <h6>Tayy_Eb Chaudhary</h6>
-                         </div>
-
-                     </div>
-                     <hr>
-                     <p class="text-muted">
-                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt tenetur cumque quam in
-                         aperiam excepturi amet est quo architecto blanditiis, odio necessitatibus accusantium facilis
-                         obcaecati? Sequi, cupiditate? Temporibus, tenetur reprehenderit?
-                     </p>
-                     <hr>
-                     <div>
-
-                     </div>
-                     <div>
-
-                     </div>
-                     <div class="d-flex justify-content-around">
+                         <hr>
+                         <h6>{{ $post->title }}</h6>
                          <div>
-                             <i class="fa fa-heart"></i>
-                             Like
+                             <img src="{{ asset('storage/image/posts/' . $post->image) }}" alt="dcds"
+                                 style="max-width: 100%; height:auto;">
                          </div>
+                         <p class="text-muted">
+                             {{ $post->content }}
+                         </p>
+                         <hr>
                          <div>
-                             <i class="fa fa-comment"></i>
-                             Comments
+
                          </div>
                          <div>
-                             <i class="fa fa-share"></i>
-                             Share
+
                          </div>
-                     </div>
+
+                         <div class="d-flex justify-content-around" style="margin-bottom: 20px">
+                             <div>
+                                 <i class="fa fa-heart"></i>
+                                 Like
+                             </div>
+                             <div>
+                                 <i class="fa fa-comment"></i>
+                                 Comments
+                             </div>
+                             <div>
+                                 <i class="fa fa-share"></i>
+                                 Share
+                             </div>
+                         </div>
+                     @endforeach
+
                  </div>
-                 <div class="box1">
-                     <div class="d-flex skfjkk">
-                         <div class="lkt40">
-                             <img src="./Images/2.jpg" alt="">
 
-                         </div>
-                         <div class="pl-2 pt-1">
-                             <h6>Danial Ahmed</h6>
-                         </div>
 
-                     </div>
-                     <hr>
-                     <p class="text-muted">
-                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt tenetur cumque quam in
-                         aperiam excepturi amet est quo architecto blanditiis, odio necessitatibus accusantium facilis
-                         obcaecati? Sequi, cupiditate? Temporibus, tenetur reprehenderit?
-                     </p>
-                     <hr>
-                     <div>
 
-                     </div>
-                     <div>
 
-                     </div>
-                     <div class="d-flex justify-content-around">
-                         <div>
-                             <i class="fa fa-heart"></i>
-                             Like
-                         </div>
-                         <div>
-                             <i class="fa fa-comment"></i>
-                             Comments
-                         </div>
-                         <div>
-                             <i class="fa fa-share"></i>
-                             Share
-                         </div>
-                     </div>
-                 </div>
-                 <div class="box1">
-                     <div class="d-flex skfjkk">
-                         <div class="lkt40">
-                             <img src="./Images/3.jpeg" alt="">
 
-                         </div>
-                         <div class="pl-2 pt-1">
-                             <h6>Usman Khan</h6>
-                         </div>
 
-                     </div>
-                     <hr>
-                     <p class="text-muted">
-                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt tenetur cumque quam in
-                         aperiam excepturi amet est quo architecto blanditiis, odio necessitatibus accusantium facilis
-                         obcaecati? Sequi, cupiditate? Temporibus, tenetur reprehenderit?
-                     </p>
-                     <hr>
-                     <div>
 
-                     </div>
-                     <div>
 
-                     </div>
-                     <div class="d-flex justify-content-around">
-                         <div>
-                             <i class="fa fa-heart"></i>
-                             Like
-                         </div>
-                         <div>
-                             <i class="fa fa-comment"></i>
-                             Comments
-                         </div>
-                         <div>
-                             <i class="fa fa-share"></i>
-                             Share
-                         </div>
-                     </div>
-                 </div>
-                 <div class="box1">
-                     <div class="d-flex skfjkk">
-                         <div class="lkt40">
-                             <img src="./Images/4.jpg" alt="">
 
-                         </div>
-                         <div class="pl-2 pt-1">
-                             <h6>Waqar Ali</h6>
-                         </div>
 
-                     </div>
-                     <hr>
-                     <p class="text-muted">
-                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt tenetur cumque quam in
-                         aperiam excepturi amet est quo architecto blanditiis, odio necessitatibus accusantium facilis
-                         obcaecati? Sequi, cupiditate? Temporibus, tenetur reprehenderit?
-                     </p>
-                     <hr>
-                     <div>
 
-                     </div>
-                     <div>
 
-                     </div>
-                     <div class="d-flex justify-content-around">
-                         <div>
-                             <i class="fa fa-heart"></i>
-                             Like
-                         </div>
-                         <div>
-                             <i class="fa fa-comment"></i>
-                             Comments
-                         </div>
-                         <div>
-                             <i class="fa fa-share"></i>
-                             Share
-                         </div>
-                     </div>
-                 </div>
-                 <div class="box1">
-                     <div class="d-flex skfjkk">
-                         <div class="lkt40">
-                             <img src="./Images/1.jpg" alt="">
 
-                         </div>
-                         <div class="pl-2 pt-1">
-                             <h6>Tayy_Eb Chaudhary</h6>
-                         </div>
-
-                     </div>
-                     <hr>
-                     <p class="text-muted">
-                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt tenetur cumque quam in
-                         aperiam excepturi amet est quo architecto blanditiis, odio necessitatibus accusantium facilis
-                         obcaecati? Sequi, cupiditate? Temporibus, tenetur reprehenderit?
-                     </p>
-                     <hr>
-                     <div>
-
-                     </div>
-                     <div>
-
-                     </div>
-                     <div class="d-flex justify-content-around">
-                         <div>
-                             <i class="fa fa-heart"></i>
-                             Like
-                         </div>
-                         <div>
-                             <i class="fa fa-comment"></i>
-                             Comments
-                         </div>
-                         <div>
-                             <i class="fa fa-share"></i>
-                             Share
-                         </div>
-                     </div>
-                 </div>
-                 <div class="box1">
-                     <div class="d-flex skfjkk">
-                         <div class="lkt40">
-                             <img src="./Images/1.jpg" alt="">
-
-                         </div>
-                         <div class="pl-2 pt-1">
-                             <h6>Tayy_Eb Chaudhary</h6>
-                         </div>
-
-                     </div>
-                     <hr>
-                     <p class="text-muted">
-                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt tenetur cumque quam in
-                         aperiam excepturi amet est quo architecto blanditiis, odio necessitatibus accusantium facilis
-                         obcaecati? Sequi, cupiditate? Temporibus, tenetur reprehenderit?
-                     </p>
-                     <hr>
-                     <div>
-
-                     </div>
-
-                     <div class="d-flex justify-content-around">
-                         <div>
-                             <i class="fa fa-heart"></i>
-                             Like
-                         </div>
-                         <div>
-                             <i class="fa fa-comment"></i>
-                             Comments
-                         </div>
-                         <div>
-                             <i class="fa fa-share"></i>
-                             Share
-                         </div>
-                     </div>
-                 </div>
-                 <div class="box1">
-                     <div class="d-flex skfjkk">
-                         <div class="lkt40">
-                             <img src="./Images/1.jpg" alt="">
-
-                         </div>
-                         <div class="pl-2 pt-1">
-                             <h6>Tayy_Eb Chaudhary</h6>
-                         </div>
-
-                     </div>
-                     <hr>
-                     <p class="text-muted">
-                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt tenetur cumque quam in
-                         aperiam excepturi amet est quo architecto blanditiis, odio necessitatibus accusantium facilis
-                         obcaecati? Sequi, cupiditate? Temporibus, tenetur reprehenderit?
-                     </p>
-                     <hr>
-                     <div>
-
-                     </div>
-                     <div>
-
-                     </div>
-                     <div class="d-flex justify-content-around">
-                         <div>
-                             <i class="fa fa-heart"></i>
-                             Like
-                         </div>
-                         <div>
-                             <i class="fa fa-comment"></i>
-                             Comments
-                         </div>
-                         <div>
-                             <i class="fa fa-share"></i>
-                             Share
-                         </div>
-                     </div>
-                 </div>
-                 <div class="box1">
-                     <div class="d-flex skfjkk">
-                         <div class="lkt40">
-                             <img src="./Images/1.jpg" alt="">
-
-                         </div>
-                         <div class="pl-2 pt-1">
-                             <h6>Tayy_Eb Chaudhary</h6>
-                         </div>
-
-                     </div>
-                     <hr>
-                     <p class="text-muted">
-                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt tenetur cumque quam in
-                         aperiam excepturi amet est quo architecto blanditiis, odio necessitatibus accusantium facilis
-                         obcaecati? Sequi, cupiditate? Temporibus, tenetur reprehenderit?
-                     </p>
-                     <hr>
-                     <div>
-
-                     </div>
-                     <div>
-
-                     </div>
-                     <div class="d-flex justify-content-around">
-                         <div>
-                             <i class="fa fa-heart"></i>
-                             Like
-                         </div>
-                         <div>
-                             <i class="fa fa-comment"></i>
-                             Comments
-                         </div>
-                         <div>
-                             <i class="fa fa-share"></i>
-                             Share
-                         </div>
-                     </div>
-                 </div>
-                 <div class="box1">
-                     <div class="d-flex skfjkk">
-                         <div class="lkt40">
-                             <img src="./Images/1.jpg" alt="">
-
-                         </div>
-                         <div class="pl-2 pt-1">
-                             <h6>Tayy_Eb Chaudhary</h6>
-                         </div>
-
-                     </div>
-                     <hr>
-                     <p class="text-muted">
-                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt tenetur cumque quam in
-                         aperiam excepturi amet est quo architecto blanditiis, odio necessitatibus accusantium facilis
-                         obcaecati? Sequi, cupiditate? Temporibus, tenetur reprehenderit?
-                     </p>
-                     <hr>
-                     <div>
-
-                     </div>
-                     <div>
-
-                     </div>
-                     <div class="d-flex justify-content-around">
-                         <div>
-                             <i class="fa fa-heart"></i>
-                             Like
-                         </div>
-                         <div>
-                             <i class="fa fa-comment"></i>
-                             Comments
-                         </div>
-                         <div>
-                             <i class="fa fa-share"></i>
-                             Share
-                         </div>
-                     </div>
-                 </div>
              </div>
              <div class="col-md-4">
                  <div class="left_box">
@@ -481,4 +205,15 @@
 
      </div>
      </div>
+     <script>
+         // Get references to the header and textarea elements
+         const header = document.getElementById("writeArticleHeader");
+         const textarea = document.getElementById("articleTextarea");
+
+         // Add an event listener to the header to listen for clicks
+         header.addEventListener("click", function() {
+             // Toggle the visibility of the textarea when the header is clicked
+             textarea.style.display = textarea.style.display === "none" ? "block" : "none";
+         });
+     </script>
  </x-frontend.layouts.master>

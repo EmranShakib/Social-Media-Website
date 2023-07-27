@@ -22,11 +22,44 @@
      <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
          integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
      <style>
-    
+   
+
+
+
+
          body {
              background: #eeeeee;
              font-family: 'Varela Round', sans-serif;
          }
+
+
+         /* alert message */
+         #alert-wrapper {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+}
+
+#alert-message {
+    display: none;
+    position: relative;
+    padding: 12px 20px;
+    border-radius: 5px;
+    background-color: #28a745;
+    color: #fff;
+}
+
+.progress-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: #fff;
+    display: none;
+}
+
 
          .form-inline {
              display: inline-block;
