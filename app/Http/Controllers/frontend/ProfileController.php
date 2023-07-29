@@ -11,6 +11,7 @@ class ProfileController extends Controller
     {
         return view('frontend.profile.index');
     }
+    
     public function update(Request $request, $id)
     {
 
@@ -34,7 +35,7 @@ class ProfileController extends Controller
             $profileUpdate->name=$request->input('name');
             $profileUpdate->email=$request->input('email');
             $profileUpdate->date_of_birth=$request->input('date_of_birth');
-            $profileUpdate->profile_image=$profileImageName??'';
+            $profileUpdate->profile_image=$profileImageName?? $profileUpdate->profile_image;
             
 
 

@@ -5,6 +5,8 @@ use App\Http\Controllers\Frontend\DashboardController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 use \App\Http\Controllers\Frontend\ProfileController;
 use \App\Http\Controllers\Frontend\PostController;
+use \App\Http\Controllers\Frontend\CommentController;
+use \App\Http\Controllers\Frontend\PageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,8 +39,18 @@ Route::get('/register', function () {
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
 
 // profile
-Route::get('/profile',[ProfileController::class,'index'])->name('profile.index')->middleware('auth');
-Route::patch('/profile/update/{id}',[ProfileController::class,'update'])->name('profile.update')->middleware('auth');
+Route::get('/profiles',[ProfileController::class,'index'])->name('profiles.index')->middleware('auth');
+Route::patch('/profiles/update/{id}',[ProfileController::class,'update'])->name('profiles.update')->middleware('auth');
+
+// page
+Route::get('/profiles/page',[PageController::class,'profile'])->name('profiles.page')->middleware('auth');
+Route::get('/favourites/page',[PageController::class,'favourite'])->name('favourities.page')->middleware('auth');
+
+ 
+
+// Posts
 Route::resource('posts', PostController::class);
+Route::post('posts/comment',[CommentController::class,'store'])->name('comments.store')->middleware('auth');
+
 
 require __DIR__.'/auth.php';

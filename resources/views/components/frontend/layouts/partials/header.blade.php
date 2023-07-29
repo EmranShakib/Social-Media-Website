@@ -8,11 +8,12 @@
      <!-- Collection of nav links, forms, and other content for toggling -->
      <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
          <div class="navbar-nav">
-             <a href="{{ route('dashboard') }}" class="nav-item nav-link active">Home</a>
-             <a href="#" class="nav-item nav-link">Favourites</a>
+             <a href="{{ route('dashboard') }}" class="nav-item nav-link active">Browse</a>
+             
+             <a href="{{ route('favourities.page') }}" class="nav-item nav-link">Favourites</a>
              <a href="#" class="nav-item nav-link">Friends</a>
-             <a href="#" class="nav-item nav-link">Blog</a>
-             <a href="#" class="nav-item nav-link">About Us</a>
+             <a href="{{ route('profiles.page') }}" class="nav-item nav-link">Profile</a>
+             
          </div>
          <div class="navbar-nav ml-auto">
              <div class="navbar-form-wrapper">
@@ -32,7 +33,7 @@
                      <img src="{{ asset('storage/image/profiles/' . Auth::user()->profile_image) }}" alt=""
                          class="rounded-circle" width="150"> {{ Auth::user()->name }}</a>
                  <div class="dropdown-menu dropdown-menu-right">
-                     <a href="{{ route('profile.index') }}" class="dropdown-item">Profile Setting</a>
+                     <a href="{{ route('profiles.index') }}" class="dropdown-item">Profile Setting</a>
                      <a href="#" class="dropdown-item">Privacy</a>
                      <a href="#" class="dropdown-item">Terms & Conditions</a>
                      <form action="{{ route('logout') }}" method="POST">

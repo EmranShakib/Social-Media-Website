@@ -7,58 +7,51 @@
      <title>{{ $title }}</title>
      <link rel="icon" type="image/x-icon" href="{{ asset('img/Wayzaway_logo.png') }}">
 
-     <link rel="stylesheet" href="{{ asset('css/index.css') }}">
-     
+
      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
          integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
-     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
-     </script>
-     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
-         integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous">
-     </script>
-     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-         integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
+
+     <!-- Add this before closing </body> tag -->
+
+     <script src="https://unpkg.com/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+     <script src="https://kit.fontawesome.com/496c26838e.js" crossorigin="anonymous"></script>
      <style>
-   
-
-
-
-
          body {
-             background: #eeeeee;
+             background: hsl(0, 100%, 100%);
              font-family: 'Varela Round', sans-serif;
          }
 
 
          /* alert message */
          #alert-wrapper {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 9999;
-}
+             position: fixed;
+             top: 20px;
+             right: 20px;
+             z-index: 9999;
+         }
 
-#alert-message {
-    display: none;
-    position: relative;
-    padding: 12px 20px;
-    border-radius: 5px;
-    background-color: #28a745;
-    color: #fff;
-}
+         #alert-message {
+             display: none;
+             position: relative;
+             padding: 12px 20px;
+             border-radius: 5px;
+             background-color: #28a745;
+             color: #fff;
+         }
 
-.progress-bar {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 4px;
-    background-color: #fff;
-    display: none;
-}
+         .progress-bar {
+             position: absolute;
+             bottom: 0;
+             left: 0;
+             width: 100%;
+             height: 4px;
+             background-color: hsl(0, 90%, 49%);
+             display: none;
+         }
 
 
          .form-inline {
@@ -69,32 +62,34 @@
              padding: 0 !important;
          }
 
-  .navbar {
-    background: #ffffff;
-    padding-left: 16px;
-    padding-right: 16px;
-    position: relative;
-    top: 0;
-    left: 0;
-    right: 0;
-    border-bottom: 1px solid #d6d6d6;
-    box-shadow: 0 0 4px rgba(0, 0, 0, .1);
-}
+         .navbar {
+             background: #ffffff;
+             padding-left: 16px;
+             padding-right: 16px;
+             position: relative;
+             top: 0;
+             left: 0;
+             right: 0;
+             border-bottom: 1px solid #d6d6d6;
+             box-shadow: 0 0 4px rgba(0, 0, 0, .1);
+         }
 
-/* Add padding or margin to the content below the navbar to prevent overlap */
-/* You can use either padding-top or margin-top, depending on your layout */
-/* Choose one option based on how you want the layout to look */
-/* Option 1: Padding-top */
-/* This adds padding to the top of the content area to push it below the fixed navbar */
-.content {
-    padding-top: 64px; /* Adjust the value as needed to match the height of your navbar */
-}
+         /* Add padding or margin to the content below the navbar to prevent overlap */
+         /* You can use either padding-top or margin-top, depending on your layout */
+         /* Choose one option based on how you want the layout to look */
+         /* Option 1: Padding-top */
+         /* This adds padding to the top of the content area to push it below the fixed navbar */
+         .content {
+             padding-top: 64px;
+             /* Adjust the value as needed to match the height of your navbar */
+         }
 
-/* Option 2: Margin-top */
-/* This adds margin to the top of the content area to push it below the fixed navbar */
-.content {
-    margin-top: 64px; /* Adjust the value as needed to match the height of your navbar */
-}
+         /* Option 2: Margin-top */
+         /* This adds margin to the top of the content area to push it below the fixed navbar */
+         .content {
+             margin-top: 64px;
+             /* Adjust the value as needed to match the height of your navbar */
+         }
 
 
          .nav-link {
@@ -216,25 +211,26 @@
                  width: 100%;
              }
          }
-         .card {
-    box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06);
-}
 
- 
+         .card {
+             box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
+         }
      </style>
      @stack('profile_style')
  </head>
 
  <body>
 
-    {{-- header include --}}
-    
-    <x-frontend.layouts.partials.header/>
+     {{-- header include --}}
 
-       {{ $slot }}
+     <x-frontend.layouts.partials.header />
 
-    <x-frontend.layouts.partials.footer/>
-     
+     {{ $slot }}
+
+     <x-frontend.layouts.partials.footer />
+     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+         integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous">
+     </script>
  </body>
 
  </html>

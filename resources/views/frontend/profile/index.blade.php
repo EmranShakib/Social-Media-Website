@@ -127,7 +127,7 @@
                 {{-- profile data update --}}
 
                 <div class="col-md-8" id="profileUpdate" style="display:none">
-                    <form action="{{ route('profile.update', ['id' => Auth::user()->id]) }}" method="post"
+                    <form action="{{ route('profiles.update', ['id' => Auth::user()->id]) }}" method="post"
                         enctype="multipart/form-data">
                         @csrf
                         @method('patch')
@@ -187,9 +187,12 @@
                                     <div class="col-sm-12">
                                         <button type="submit" class="btn btn-success btn-sm">Update</button>
 
-                                        <button class="btn btn-danger btn-sm" id="cancelButton">Cancel</button>
 
+                                        <a href="" class="btn btn-danger btn-sm">Cancel</a>
+                                       
                                     </div>
+                                     
+
                                 </div>
 
                             </div>

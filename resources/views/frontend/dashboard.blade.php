@@ -5,215 +5,231 @@
 
      <x-alert-message.alert />
 
+     <div class="container-fluid">
+         <div class="row mt-3">
 
-     <div class="container jsjhr">
-         <div class="row skfjh">
-             <div class="col-md-2 sfjhe">
-                 <div class=" sjfsj">
-                     <img src="{{ asset('storage/image/profiles/' . Auth::user()->profile_image) }}" alt="Admin"
-                         class="rounded-circle" width="150">
-                     <h5 class="text-center pt-3">
-                         {{ Auth::user()->name }}
-                     </h5>
-                     <p class="text-muted text-center">
-                         Software Engineer
-                     </p>
-                     <hr>
-                     <div class="d-flex">
-                         <div>
-                             <p>
-                                 4K Followers
-                             </p>
-                         </div>
-                         <div>
-                             <p>
-                                 24K Following
-                             </p>
-                         </div>
-                     </div>
-                     <hr>
-                     <div class="text-center">
-                         <a href="" class="font-weight-bold text-decoration-none text-center">
-                             View My Profile
-                         </a>
-                     </div>
-                 </div>
-             </div>
-             <div class="col-md-6">
-                 <div class="jfheuf">
-                     <div class="d-flex justify-content-around">
-                         <div>
-                             <h6><i class="fas fa-edit text-primary pr-1"></i>Share an update</h6>
-                         </div>
-                         <div>
-                             <h6>
-                                 <i class="fas fa-arrow-up text-success pr-1"></i> upload a photo
-                             </h6>
-                         </div>
-                         <div>
-                             <h6 id="writeArticleHeader" style="cursor: pointer">
-                                 <i class="fas fa-book-open text-info pr-1"></i> Write an article
-                             </h6>
-                         </div>
-                     </div>
-                     <hr>
-                     <form action="{{ route('posts.store') }}" id="articleTextarea" style="display:none" method="POST"
-                         enctype="multipart/form-data">
-                         @csrf
-                         <input type="file" class="mb-2"name="image">
-                         <input type="text" placeholder="Enter the title" name="title">
-                         <textarea cols="3" rows="3" class="form-control" placeholder="Write Something...." name="content"></textarea>
-                         <button class="btn btn-sm btn-primary mt-2">Post</button>
-                     </form>
-                 </div>
-                 <div class="box1">
+             {{-- Left Side --}}
+             <div class="col-md-9">
 
-                     @foreach ($posts as $post)
-                         <div class="d-flex skfjkk">
-                             <div class="lkt40">
-                                 <img src="{{ asset('storage/image/profiles/' . $post->user->profile_image) }}"
-                                     alt="" class="rounded-circle" width="150">
+                 {{-- Search Bar --}}
+                 <div class="d-flex col-12" style="background-color: hsl(327, 37%, 88%);height:100px">
 
-                             </div>
-                             <div class="pl-2 pt-1 row">
-                                 <h5>{{ $post->user->name }}</h5>
-
-                             </div>
-
-
+                     <div class="row mx-auto my-auto">
+                         <div class="col-3 ">
+                             <label for="" class="pb-2">Start Date</label><br>
+                             <input type="date" class="form-control" id="myDateInput">
                          </div>
-                         <hr>
-                         <h6>{{ $post->title }}</h6>
-                         <div>
-                             <img src="{{ asset('storage/image/posts/' . $post->image) }}" alt="dcds"
-                                 style="max-width: 100%; height:auto;">
+                         <div class="col-3">
+                             <label for=""class="pb-2">End Date</label><br>
+                             <input type="date" class="form-control" id="myDateInput">
                          </div>
-                         <p class="text-muted">
-                             {{ $post->content }}
-                         </p>
-                         <hr>
-                         <div>
-
-                         </div>
-                         <div>
-
-                         </div>
-
-                         <div class="d-flex justify-content-around" style="margin-bottom: 20px">
-                             <div>
-                                 <i class="fa fa-heart"></i>
-                                 Like
-                             </div>
-                             <div>
-                                 <i class="fa fa-comment"></i>
-                                 Comments
-                             </div>
-                             <div>
-                                 <i class="fa fa-share"></i>
-                                 Share
+                         <div class="col-3">
+                             <label for=""class="pb-2">Category</label><br>
+                             <div class="form-group">
+                                 <!-- Use Bootstrap's custom-select class to style the select element -->
+                                 <select class="custom-select form-control" name="category" id="categorySelect">
+                                     <option value="">All Categories</option>
+                                     <option value="1">Category 1</option>
+                                     <option value="2">Category 2</option>
+                                     <!-- Add more options as needed -->
+                                 </select>
                              </div>
                          </div>
-                     @endforeach
-
-                 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-             </div>
-             <div class="col-md-4">
-                 <div class="left_box">
-                     <span>
-                         Keep in touch
-                     </span>
-                     <hr>
-                     <div class="d-flex dfkj">
-                         <div class="lkt40">
-                             <img src="{{ asset('img/Wayzaway_logo.png') }}" alt="">
-
-                         </div>
-                         <div>
-                             Tayy_Eb Chaudhary
-                         </div>
-                     </div>
-                     <hr>
-                     <div class="d-flex dfkj">
-                         <div class="lkt40">
-                             <img src="./Images/2.jpg" alt="">
-
-                         </div>
-                         <div>
-                             Danial Ahmed
-                         </div>
-                     </div>
-                     <hr>
-                     <div class="d-flex dfkj">
-                         <div class="lkt40">
-                             <img src="./Images/3.jpeg" alt="">
-
-                         </div>
-                         <div>
-                             Usman Khan
-                         </div>
-                     </div>
-                     <hr>
-                     <div class="d-flex dfkj">
-                         <div class="lkt40">
-                             <img src="./Images/4.jpg" alt="">
-
-                         </div>
-                         <div>
-                             Waqar Ali
+                         <div class="col-3 form-group">
+                             <label for=""class="pb-2"></label><br>
+                             <button class="btn btn-danger mt-2">FIND EVENT</button>
                          </div>
                      </div>
                  </div>
 
-                 <div class="left_box mt-3">
-                     <span>
-                         Your Profile Trafic
-                     </span>
-                     <hr>
-                     <img src="https://res.cloudinary.com/yaffa-publishing/image/fetch/v1456442193/http://yaffa-cdn.s3.amazonaws.com/adnews/live/images/dmImage/SourceImage/graph12_CE9EDD90-DC15-11E5-86900204D9902A1F.jpg"
-                         class="w-100" alt="">
+                 <div class="col-12 bg-info  ">
+                     <div class="row">
+                         <section style="background-color:white;">
+                             <div class="container py-5">
+                                 <div class="row ">
+                                     <div class="col-md-6 col-lg-6 col-xl-6 mb-3">
+                                         <div class="card text-black">
+                                             <span class="badge bg-primary w-25 mt-2">July 2023</span>
+
+                                             <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/3.webp"
+                                                 class="card-img-top" alt="Apple Computer" />
+
+                                             <div class="card-body">
+                                                 {{-- <div class="text-center">
+                                                     
+                                                 </div> --}}
+                                                 <div>
+                                                     <div class="">
+                                                         <span class="text-danger">Sports</span>
+                                                     </div>
+                                                     <div class="">
+                                                         <h6>Internation Sport Conference in 2021</h6>
+                                                     </div>
+                                                     <div class="">
+                                                         <span>12:00 AM - 2:00 PM</span>
+                                                     </div>
+                                                     <div class="">
+                                                         <span>Dhaka</span>
+                                                     </div>
+                                                     <div class="">
+                                                         <button class="btn btn-outline-dark btn-sm">More
+                                                             Details</button>
+                                                     </div>
+                                                 </div>
+                                                 <div class="d-flex justify-content-end total font-weight-bold">
+                                                     <i class="fa-regular fa-bell fa-xl"></i>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                     </div>
+
+
+
+                                 </div>
+                             </div>
+                         </section>
+                     </div>
                  </div>
 
-                 <div class="left_box mt-3">
-                     <span class="font-weight-medium">
-                         updated News Here
-                     </span>
-                     <hr>
-                     <p>
-                         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut rem nisi natus totam veritatis
-                         nam repellat veniam, praesentium quam perspiciatis adipisci reiciendis, at qui aperiam ex sit,
-                         officia expedita beatae!
-                     </p>
-                 </div>
              </div>
 
 
+             {{-- Right Side --}}
+             <div class="col-md-3 col-lg-3 col-xl-3 mb-3">
 
+                 <div style="height: 100px" class="border border-1">
+
+                     <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                         data-bs-target="#exampleModal" data-bs-whatever="@mdo"
+                         style="margin-left:70px;margin-top:30px">
+                         <i class="fa-solid fa-calendar-days fa-beat"></i> Create Event
+                     </button>
+
+                     {{-- event modal --}}
+                     <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                         aria-hidden="true">
+                         <div class="modal-dialog modal-lg">
+                             <div class="modal-content">
+                                 <div class="modal-header">
+                                     <h5 class="modal-title" id="exampleModalLabel">Create New Event</h5>
+                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                         aria-label="Close"></button>
+                                 </div>
+                                 <div class="modal-body">
+                                     <form>
+                                         <div class="form-group row mb-2">
+                                             <label for="title" class="col-sm-2 col-form-label">Title:</label>
+                                             <div class="col-sm-10">
+                                                 <input type="text" class="form-control" id="title"
+                                                     name="title" required>
+                                             </div>
+                                         </div>
+                                         <div class="form-group row mb-2">
+                                             <label for="description"
+                                                 class="col-sm-2 col-form-label">Description:</label>
+                                             <div class="col-sm-10">
+                                                 <textarea class="form-control" id="description" name="description" rows="4" required></textarea>
+                                             </div>
+                                         </div>
+
+                                         <div class="form-group row mb-2">
+                                             <label for="date" class="col-sm-2 col-form-label">Date:</label>
+                                             <div class="col-sm-4">
+                                                 <input type="date" class="form-control" id="date"
+                                                     name="date" required>
+                                             </div>
+                                             <label for="startTime" class="col-sm-2 col-form-label">Category</label>
+                                             <div class="col-sm-4">
+                                                  <select name="" id="" class="form-control">
+                                                    <option value="">Select Category</option>
+                                                    <option value="">Select Category</option>
+                                                    <option value="">Select Category</option>
+                                                  </select>
+                                             </div>
+                                         </div>
+
+                                         <div class="form-group row mb-2">
+                                             <label for="endTime" class="col-sm-2 col-form-label">Start Time:</label>
+                                             <div class="col-sm-4">
+                                                 <input type="time" class="form-control" id="endTime"
+                                                     name="endTime" required>
+                                             </div>
+                                              <label for="startTime" class="col-sm-2 col-form-label">End
+                                                 Time:</label>
+                                             <div class="col-sm-4">
+                                                 <input type="time" class="form-control" id="startTime"
+                                                     name="startTime" required>
+                                             </div>
+                                         </div>
+                                         <div class="form-group row mb-2">
+                                             <label for="bannerImage" class="col-sm-2 col-form-label">Banner
+                                                 Image:</label>
+                                             <div class="col-sm-10">
+                                                 <input type="file" class="form-control-file" id="bannerImage"
+                                                     name="bannerImage">
+                                             </div>
+                                         </div>
+                                         <div class="form-group row mb-2">
+                                             <label for="multipleImages" class="col-sm-2 col-form-label">Multiple
+                                                 Images:</label>
+                                             <div class="col-sm-10">
+                                                 <input type="file" class="form-control-file" id="multipleImages"
+                                                     name="multipleImages" multiple>
+                                                 
+                                             </div>
+                                         </div>
+                                         <div class="form-group row mb-2">
+                                             <div class="col-sm-10 offset-sm-2">
+                                                 <button type="submit" class="btn btn-primary">Submit</button>
+                                             </div>
+                                         </div>
+                                     </form>
+                                 </div>
+                             </div>
+                             <div class="modal-footer">
+                                 <button type="button" class="btn btn-secondary"
+                                     data-bs-dismiss="modal">Close</button>
+                                 <button type="button" class="btn btn-primary">Send message</button>
+                             </div>
+                         </div>
+                     </div>
+                     {{-- end event modal --}}
+                     
+                  
+
+             </div>
+
+             <div class="card text-black col-12 mb-2" style="margin-top:40px">
+                 <div class="card-header">Event Cateories</div>
+
+
+                 <div class="card-body">
+                     <li>fdjgh</li>
+                     <li>fdjgh</li>
+                     <li>fdjgh</li>
+                     <li>fdjgh</li>
+
+                 </div>
+             </div>
+
+             <div class="card text-black col-12 mb-2">
+                 <div class="card-header">Upcoming Event</div>
+
+
+                 <div class="card-body">
+                     <li>fdjgh</li>
+                     <li>fdjgh</li>
+                     <li>fdjgh</li>
+                     <li>fdjgh</li>
+
+                 </div>
+             </div>
          </div>
+     </div>
+
 
      </div>
      </div>
-     <script>
-         // Get references to the header and textarea elements
-         const header = document.getElementById("writeArticleHeader");
-         const textarea = document.getElementById("articleTextarea");
 
-         // Add an event listener to the header to listen for clicks
-         header.addEventListener("click", function() {
-             // Toggle the visibility of the textarea when the header is clicked
-             textarea.style.display = textarea.style.display === "none" ? "block" : "none";
-         });
-     </script>
+
  </x-frontend.layouts.master>
