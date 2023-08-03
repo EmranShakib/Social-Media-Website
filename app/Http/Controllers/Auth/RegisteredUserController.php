@@ -35,6 +35,7 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'date_of_birth' => $request->date_of_birth,
             'country' => $request->country,
+            'role' =>'user',
             'profile_image' => 'profile.jpg',
             'password' => Hash::make($request->password),
         ]);

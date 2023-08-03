@@ -7,7 +7,7 @@ use App\Http\Requests\Auth\LoginRequest;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
-
+use App\Providers\RouteServiceProvider;
 class AuthenticatedSessionController extends Controller
 {
     /**
@@ -15,17 +15,19 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request)
     {
-        $credentials = $request->only('email', 'password');
+        $request->authenticate();
 
-        // Perform the login attempt manually
-        if (Auth::attempt($credentials)) {
-            // If the login attempt was successful, regenerate the session and redirect to the dashboard
-            $request->session()->regenerate();
-            return redirect()->route('dashboard');
-        } else {
-            // If the login attempt failed, return a response with some error message
-            return response()->json(['message' => 'Invalid credentials'], 401);
+        $request->session()->regenerate();
+
+        $user = $request->user();
+        if ($user->role === 'admin') {
+            return redirect()->route('dashboard1'); // Redirect to admin page
+        } elseif ($user->role === 'user') {
+            return redirect()->route('dashboard'); // Redirect to frontend
         }
+
+
+        return redirect()->intended(RouteServiceProvider::HOME);
     }
 
     /**

@@ -1,11 +1,11 @@
- <x-frontend.layouts.master>
+ <x-frontend.master>
      {{-- dynamic title using components --}}
 
      <x-slot name="title">WayzAway-Profile-page</x-slot>
 
      <x-alert-message.alert />
 
-     <div class="container-fluid">
+     <div class="container-fluid" style="margin-top:100px">
          <div class="row mt-3">
 
              {{-- Left Side --}}
@@ -102,4 +102,4 @@
      </div>
 
 
- </x-frontend.layouts.master>
+ </x-frontend.master>

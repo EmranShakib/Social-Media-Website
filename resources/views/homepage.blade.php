@@ -49,10 +49,10 @@
                                         you spent your weekends, holidays and time. A social network that<br>
                                         enhances real life connections you have with people you love</p>
                                     <div class="d-flex gap-2">
-                                        <a href="{{ route('login.page') }}" class="btn btn-dark btn-sm">Sign in to
+                                        <a href="{{ route('login.page') }}" class="btn btn-dark">Sign in to
                                             Wayzaway</a>
 
-                                        <a href="{{ route('register.page') }}" class="btn btn-danger btn-sm">oin
+                                        <a href="{{ route('register.page') }}" class="btn btn-danger">oin
                                             Wayzaway</a>
                                     </div>
 

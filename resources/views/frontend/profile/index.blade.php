@@ -1,4 +1,4 @@
-<x-frontend.layouts.master>
+<x-frontend.master>
     <x-slot name="title">WayzAway-Profile</x-slot>
     @push('profile_style')
         <style>
@@ -52,7 +52,7 @@
             }
         </style>
     @endpush
-    <div class="container jsjhr">
+    <div class="container jsjhr" style="margin-top:100px">
         <div class="main-body">
  
            <x-alert-message.alert/>
@@ -260,4 +260,4 @@
             }
         });
     </script>
-</x-frontend.layouts.master>
+</x-frontend.master>

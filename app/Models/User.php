@@ -23,6 +23,7 @@ class User extends Authenticatable
         'date_of_birth', 
         'country', 
         'profile_image', 
+        'role', 
         'password',
     ];
 
@@ -48,6 +49,10 @@ class User extends Authenticatable
 
 
     public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
+    public function events()
     {
         return $this->hasMany(Post::class);
     }

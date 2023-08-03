@@ -7,6 +7,9 @@ use \App\Http\Controllers\Frontend\ProfileController;
 use \App\Http\Controllers\Frontend\PostController;
 use \App\Http\Controllers\Frontend\CommentController;
 use \App\Http\Controllers\Frontend\PageController;
+use \App\Http\Controllers\Frontend\EventController;
+use \App\Http\Controllers\Frontend\FriendController;
+use App\Http\Controllers\Admin\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,8 +38,29 @@ Route::get('/register', function () {
     return view('auth.register');
 })->name('register.page')->middleware('guest');
 
+
+// admin
+
+Route::middleware(['auth','isAdmin'])->group(function () {
+
+
+    Route::get('/dashboard1', [DashboardController::class, 'dashboard'])->name('dashboard1');
+    Route::resource('categories', CategoryController::class)->only(['index','store']);
+    Route::post('/categories/delete',[CategoryController::class,'delete'])->name('categories.delete');
+});
+
+
+
+
+
 // dashboard
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
+Route::resource('events', EventController::class)->middleware('auth');
+
+// friends
+Route::resource('friends', FriendController::class)->middleware('auth');
+Route::post('/invite-friend', [FriendController::class, 'inviteFriend'])->name('invite.friend')->middleware('auth');
+Route::get('/accept-invitation/{email}/{id}', [FriendController::class, 'acceptInvitation'])->name('accept.invitation');
 
 // profile
 Route::get('/profiles',[ProfileController::class,'index'])->name('profiles.index')->middleware('auth');
