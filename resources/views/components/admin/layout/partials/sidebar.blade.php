@@ -10,31 +10,22 @@
           </li><!-- End Dashboard Nav -->
 
 
-          <li class="nav-item">
-              <a class="nav-link collapsed" href="">
-                  <i class="bi bi-person"></i>
-                  <span>Order</span>
-              </a>
-          </li><!-- End Profile Page Nav -->
-          <li class="nav-item">
-              <a class="nav-link collapsed" href="">
-                  <i class="bi bi-person"></i>
-                  <span>Book Sell</span>
-              </a>
-          </li><!-- End Profile Page Nav -->
+         
+          
           <li class="nav-item">
               <a class="nav-link collapsed" href="{{ route('categories.index') }}">
                   <i class="bi bi-person"></i>
                   <span>Category</span>
               </a>
           </li><!-- End Profile Page Nav -->
-
           <li class="nav-item">
-              <a class="nav-link collapsed" href="">
-                  <i class="bi bi-question-circle"></i>
-                  <span>Add Book</span>
+              <a class="nav-link collapsed" href="{{ route('events.index') }}">
+                  <i class="bi bi-person"></i>
+                  <span>Event</span>
               </a>
-          </li><!-- End F.A.Q Page Nav -->
+          </li><!-- End Profile Page Nav -->
+
+         
          
 
 

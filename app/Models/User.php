@@ -56,4 +56,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(Post::class);
     }
+    public function accepts()
+    {
+        return $this->hasMany(AcceptInvite::class);
+    }
 }

@@ -80,10 +80,16 @@
                                                          <div class="pt-2">
                                                              <a href="{{ route('events.show', ['event' => $event->id]) }}"
                                                                  class="btn btn-outline-dark btn-sm">More Details</a>
+                                                             <button class="btn btn-sm btn-outline-dark favouriteBtn"
+                                                                 data-id={{ $event->id }}> Add Favourite<i
+                                                                     class="fas fa-heart fa-xl ms-2 text-danger"></i></button>
                                                          </div>
                                                      </div>
                                                      <div class="d-flex justify-content-end total font-weight-bold">
+
                                                          <i class="fa-regular fa-bell fa-xl"></i>
+
+
                                                      </div>
                                                  </div>
                                              </div>
@@ -146,8 +152,9 @@
                              <div class="row mb-3">
 
                                  <div class="col-md-6 col-6">
-                                    <a href="{{ route('events.show', ['event' => $upcomingEvent->id]) }}"> <img src="{{ asset('storage/image/events/' . $upcomingEvent->banner_image) }}"
-                                         alt="" style="width: 90px;height:80px"></a>
+                                     <a href="{{ route('events.show', ['event' => $upcomingEvent->id]) }}"> <img
+                                             src="{{ asset('storage/image/events/' . $upcomingEvent->banner_image) }}"
+                                             alt="" style="width: 90px;height:80px"></a>
                                  </div>
                                  <div class="col-md-6 d-flex flex-column col-6">
                                      <span>{{ $upcomingEvent->title }}</span>
@@ -169,6 +176,6 @@
 
      </div>
      </div>
-
+     <x-frontend.ajax.favourite_ajax />
 
  </x-frontend.master>

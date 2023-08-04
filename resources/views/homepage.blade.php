@@ -40,19 +40,19 @@
                             <div class="row">
                                 <div class="col-md-7">
                                     <img src="{{ asset('img/Wayzaway_logo.png') }}" alt=""
-                                        style="width: 200px;height:50px">
+                                        style="width: 220px;height:70px">
                                     <h1><strong>Imagine a place....</strong></h1>
 
 
-                                    <p style="color: hsl(0, 0%, 34%)">Where you can tell only your friends and family
+                                    <p style="color: #272424" class="fs-4">Where you can tell only your friends and family
                                         about the places<br>
                                         you spent your weekends, holidays and time. A social network that<br>
                                         enhances real life connections you have with people you love</p>
                                     <div class="d-flex gap-2">
-                                        <a href="{{ route('login.page') }}" class="btn btn-dark">Sign in to
+                                        <a href="{{ route('login.page') }}" class="btn btn-dark btn-lg fs-3">Sign in to
                                             Wayzaway</a>
 
-                                        <a href="{{ route('register.page') }}" class="btn btn-danger">oin
+                                        <a href="{{ route('register.page') }}" class="btn btn-danger btn-lg fs-3">Join
                                             Wayzaway</a>
                                     </div>
 
@@ -97,17 +97,17 @@
                         </div>
                         <div class="col-md-5">
 
-                            <h1><strong>Tell your loved
-                                    ones about your
-                                    days out and
+                            <h1><strong>Tell your loved <br>
+                                    ones about your <br>
+                                    days out and <br>
                                     upcoming events</strong></h1>
 
 
-                            <p style="color: hsl(0, 0%, 34%)">Wayzaway is a way to share the
-                                things you’re doing with friends
-                                that you know in real life. It’s a
-                                great way to see what they’re up to
-                                and get ideas on what to do from
+                            <p style="color: hsl(0, 0%, 34%)" class="fs-4 text-dark">Wayzaway is a way to share the <br>
+                                things you’re doing with friends <br>
+                                that you know in real life. It’s a <br>
+                                great way to see what they’re up to <br>
+                                and get ideas on what to do from <br>
                                 people you trust</p>
 
 
@@ -147,12 +147,12 @@
                             <div class="row">
                                 <div class="col-md-7">
 
-                                    <h1><strong>Social media site
-                                            that enhances
+                                    <h1><strong>Social media site <br>
+                                            that enhances <br>
                                             your real life</strong></h1>
 
 
-                                    <p style="color: hsl(0, 0%, 34%)">Wayzaway is a social media site that<br>
+                                    <p style="color: hsl(0, 0%, 34%)" class="fs-4 text-dark">Wayzaway is a social media site that<br>
                                         helps you connect with friends in a<br>
                                         unique, useful and practical way</p>
 
@@ -194,7 +194,7 @@
                             <img src="{{ asset('img/Wayzaway_logo.png') }}" alt=""
                                 style="width: 200px;height:50px; ">
                         </div>
-                        <p style="color: hsl(0, 0%, 34%);padding-left:100px;">A social network site that allows you to
+                        <p style="color: hsl(0, 0%, 34%);padding-left:100px;" class="text-center fs-4 text-dark">A social network site that allows you to
                             post places
                             and events you’ve visited, or ones that are upcoming<br>
                             to only friends and families. You can share your thoughts and help inspire people
@@ -211,12 +211,12 @@
                         </div>
 
                         <div class="" style="padding-left:450px;">
-                            <p><b>Are you ready?</b></p>
+                            <p class=" fs-2"><b>Are you ready?</b></p>
                         </div>
 
                         <div class="d-flex gap-2" style="padding-left:380px;">
-                            <button class="btn btn-dark btn-sm">Sign in to Wayzaway</button>
-                            <button class="btn btn-danger btn-sm ">Join
+                            <button class="btn btn-dark btn-lg fs-3">Sign in to Wayzaway</button>
+                            <button class="btn btn-danger btn-lg fs-3">Join
                                 Wayzaway</button>
                         </div>
 

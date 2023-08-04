@@ -9,6 +9,7 @@ use \App\Http\Controllers\Frontend\CommentController;
 use \App\Http\Controllers\Frontend\PageController;
 use \App\Http\Controllers\Frontend\EventController;
 use \App\Http\Controllers\Frontend\FriendController;
+use \App\Http\Controllers\Frontend\FavouriteController;
 use App\Http\Controllers\Admin\CategoryController;
 
 /*
@@ -56,15 +57,23 @@ Route::middleware(['auth','isAdmin'])->group(function () {
 // dashboard
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
 Route::resource('events', EventController::class)->middleware('auth');
+Route::get('/admin/events', [EventController::class, 'admin_event'])->name('admin.event')->middleware('auth');
 
-// friends
+// friends page
 Route::resource('friends', FriendController::class)->middleware('auth');
+// frined invitation
 Route::post('/invite-friend', [FriendController::class, 'inviteFriend'])->name('invite.friend')->middleware('auth');
 Route::get('/accept-invitation/{email}/{id}', [FriendController::class, 'acceptInvitation'])->name('accept.invitation');
+
+//favourite 
+Route::get('/favourites', [FavouriteController::class, 'index'])->name('favourites.index')->middleware('auth');
+Route::post('/favourites', [FavouriteController::class, 'store'])->name('favourites.store')->middleware('auth');
+
 
 // profile
 Route::get('/profiles',[ProfileController::class,'index'])->name('profiles.index')->middleware('auth');
 Route::patch('/profiles/update/{id}',[ProfileController::class,'update'])->name('profiles.update')->middleware('auth');
+Route::post('/changepassword',[ProfileController::class,'password'])->name('change.password')->middleware('auth');
 
 // page
 Route::get('/profiles/page',[PageController::class,'profile'])->name('profiles.page')->middleware('auth');

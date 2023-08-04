@@ -113,11 +113,57 @@
                             <div class="row">
                                 <div class="col-sm-12">
                                     <button type="submit" class="btn btn-primary btn-sm" id="editButton">Edit</button>
+                                    <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#myModal">
+Change Password
+</button>
                                 </div>
                             </div>
                         </div>
                     </div>
 
+                   <!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Change Password</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="{{ route('change.password') }}" method="post">
+            @csrf
+                            <div class="form-group">
+                                <label for="currentPassword">Current Password</label>
+                                <input type="password" class="form-control" id="currentPassword" name="currentPassword" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="newPassword">New Password</label>
+                                <input type="password" class="form-control" id="newPassword" name="new_password" required>
+                                  @error('new_password')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                            </div>
+                            <div class="form-group">
+                                <label for="confirmPassword">Confirm Password</label>
+                                <input type="password" class="form-control" id="password_confirmation" name="new_password_confirmation" required>
+                                  @error('new_password_confirmation')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                            </div>
+                            
+                     
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
+      </div>
+         </form>
+    </div>
+  </div>
+</div>
 
 
 

@@ -11,7 +11,7 @@
                <ul>
                    <li><a class="active" href="{{ route('dashboard') }}">Browse</a></li>
                    <li><a href="{{ route('friends.index') }}">Friends</a></li>
-                   <li><a href="{{ route('favourities.page') }}">Favourites</a></li>
+                   <li><a href="{{ route('favourites.index') }}">Favourites</a></li>
                    <li><a href="{{ route('profiles.page') }}">Profile</a></li>
 
                 
@@ -32,7 +32,12 @@
                    <a href="{{ route('profiles.index') }}" class="dropdown-item">Profile Setting</a>
                    <a href="#" class="dropdown-item">Privacy</a>
                    <a href="#" class="dropdown-item">Terms & Conditions</a>
-                   <a href="{{ route('dashboard1') }}" class="dropdown-item">Admin</a>
+                   @if(Auth::user()->role=='admin')
+                   
+                       <a href="{{ route('dashboard1') }}" class="dropdown-item">Admin</a>
+                   
+                   @endif
+                  
                    <form action="{{ route('logout') }}" method="POST">
                        @csrf
                        <input type="submit" value="Logout" class="dropdown-item">

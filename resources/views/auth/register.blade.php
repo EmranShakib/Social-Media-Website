@@ -55,6 +55,11 @@
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
+                        @if (session('user_id'))
+                        <input type="hidden" name="user_id" value="{{ session('user_id') }}">
+                             
+                        @endif
+
                         <div class="mb-3">
                             <input type="email" class="form-control" id="email" aria-describedby="emailHelp"
                                 placeholder="Email" name="email" value="{{ old('email') }}">

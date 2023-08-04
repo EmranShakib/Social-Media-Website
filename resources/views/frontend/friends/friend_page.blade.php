@@ -12,27 +12,28 @@
                   <div class="profile-header-cover"></div>
                   <div class="profile-header-content">
                       <div class="profile-header-img mb-4">
-                          <img src="https://bootdey.com/img/Content/avatar/avatar7.png" class="mb-4" alt="" />
+                          <img src="{{ asset('storage/image/profiles/' . Auth::user()->profile_image) }}" class="mb-4"
+                              alt="" />
                       </div>
 
                       <div class="profile-header-info">
-                          <h4 class="m-t-sm">Clyde Stanley</h4>
-                          <p class="m-b-sm">UXUI + Frontend Developer</p>
+                          <h4 class="m-t-sm pb-3">{{ Auth::user()->name }}</h4>
+
                           <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                               data-bs-target="#inviteModal">
                               Invite Friend
                           </button>
                       </div>
                   </div>
-                    <x-frontend.model.invite_friend />
-                  <ul class="profile-header-tab nav nav-tabs">
+                  <x-frontend.model.invite_friend />
+                  {{-- <ul class="profile-header-tab nav nav-tabs">
                       <li class="nav-item"><a href="#profile-post" class="nav-link" data-toggle="tab">POSTS</a></li>
                       <li class="nav-item"><a href="#profile-about" class="nav-link" data-toggle="tab">ABOUT</a></li>
                       <li class="nav-item"><a href="#profile-photos" class="nav-link" data-toggle="tab">PHOTOS</a></li>
                       <li class="nav-item"><a href="#profile-videos" class="nav-link" data-toggle="tab">VIDEOS</a></li>
                       <li class="nav-item"><a href="#profile-friends" class="nav-link active show"
                               data-toggle="tab">FRIENDS</a></li>
-                  </ul>
+                  </ul> --}}
               </div>
 
               <div class="profile-container">
@@ -41,108 +42,36 @@
                           <div class="tab-content p-0">
 
                               <div class="tab-pane fade active show" id="profile-friends">
-                                  <div class="m-b-10"><b>Friend List (9)</b></div>
+                                  <div class="m-b-10"><b>Friend List ({{ $friendsNumber }})</b></div>
 
                                   <ul class="friend-list clearfix">
-                                      <li>
-                                          <a href="#">
-                                              <div class="friend-img"><img
-                                                      src="https://bootdey.com/img/Content/avatar/avatar2.png"
-                                                      alt="" /></div>
-                                              <div class="friend-info">
-                                                  <h4>Sancho Aldo</h4>
-                                                  <p>392 friends</p>
-                                              </div>
-                                          </a>
-                                      </li>
-                                      <li>
-                                          <a href="#">
-                                              <div class="friend-img"><img
-                                                      src="https://bootdey.com/img/Content/avatar/avatar3.png"
-                                                      alt="" /></div>
-                                              <div class="friend-info">
-                                                  <h4>Jonty Augusto</h4>
-                                                  <p>128 friends</p>
-                                              </div>
-                                          </a>
-                                      </li>
-                                      <li>
-                                          <a href="#">
-                                              <div class="friend-img"><img
-                                                      src="https://bootdey.com/img/Content/avatar/avatar4.png"
-                                                      alt="" /></div>
-                                              <div class="friend-info">
-                                                  <h4>Androkles Allen</h4>
-                                                  <p>12 friends</p>
-                                              </div>
-                                          </a>
-                                      </li>
-                                      <li>
-                                          <a href="#">
-                                              <div class="friend-img"><img
-                                                      src="https://bootdey.com/img/Content/avatar/avatar5.png"
-                                                      alt="" /></div>
-                                              <div class="friend-info">
-                                                  <h4>Ithamar Silvio</h4>
-                                                  <p>1,923 friends</p>
-                                              </div>
-                                          </a>
-                                      </li>
-                                      <li>
-                                          <a href="#">
-                                              <div class="friend-img"><img
-                                                      src="https://bootdey.com/img/Content/avatar/avatar6.png"
-                                                      alt="" /></div>
-                                              <div class="friend-info">
-                                                  <h4>Denzel Annas</h4>
-                                                  <p>893 friends</p>
-                                              </div>
-                                          </a>
-                                      </li>
-                                      <li>
-                                          <a href="#">
-                                              <div class="friend-img"><img
-                                                      src="https://bootdey.com/img/Content/avatar/avatar7.png"
-                                                      alt="" /></div>
-                                              <div class="friend-info">
-                                                  <h4>Kamil Cree</h4>
-                                                  <p>983 friends</p>
-                                              </div>
-                                          </a>
-                                      </li>
-                                      <li>
-                                          <a href="#">
-                                              <div class="friend-img"><img
-                                                      src="https://bootdey.com/img/Content/avatar/avatar8.png"
-                                                      alt="" /></div>
-                                              <div class="friend-info">
-                                                  <h4>Fritjof Inderjit</h4>
-                                                  <p>3,321 friends</p>
-                                              </div>
-                                          </a>
-                                      </li>
-                                      <li>
-                                          <a href="#">
-                                              <div class="friend-img"><img
-                                                      src="https://bootdey.com/img/Content/avatar/avatar1.png"
-                                                      alt="" /></div>
-                                              <div class="friend-info">
-                                                  <h4>Sushil Trygve</h4>
-                                                  <p>921 friends</p>
-                                              </div>
-                                          </a>
-                                      </li>
-                                      <li>
-                                          <a href="#">
-                                              <div class="friend-img"><img
-                                                      src="https://bootdey.com/img/Content/avatar/avatar2.png"
-                                                      alt="" /></div>
-                                              <div class="friend-info">
-                                                  <h4>Frans Gebhard</h4>
-                                                  <p>944 friends</p>
-                                              </div>
-                                          </a>
-                                      </li>
+                                      @foreach ($friends as $friend)
+                                          <li>
+                                              <a href="#">
+                                                  <div class="friend-img"><img
+                                                          src="{{ asset('storage/image/profiles/' . $friend->user->profile_image) }}"
+                                                          alt="" /></div>
+                                                  <div class="friend-info">
+                                                      <h4>{{ $friend->user->name }}</h4>
+
+                                                  </div>
+                                              </a>
+                                          </li>
+                                      @endforeach
+
+                                      @foreach ($acceptfrineds as $friend)
+                                          <li>
+                                              <a href="#">
+                                                  <div class="friend-img"><img src="" alt="" /></div>
+                                                  <div class="friend-info">
+                                                      <h4>{{ $friend->user->name }}</h4>
+
+                                                  </div>
+                                              </a>
+                                          </li>
+                                      @endforeach
+
+
                                   </ul>
                               </div>
                           </div>
@@ -187,32 +116,8 @@
                               <li class="title">FRIEND LIST (9)</li>
                               <li class="img-list">
                                   <a href="#" class="m-b-5"><img
-                                          src="https://bootdey.com/img/Content/avatar/avatar2.png"
-                                          alt="" /></a>
-                                  <a href="#" class="m-b-5"><img
-                                          src="https://bootdey.com/img/Content/avatar/avatar3.png"
-                                          alt="" /></a>
-                                  <a href="#" class="m-b-5"><img
-                                          src="https://bootdey.com/img/Content/avatar/avatar4.png"
-                                          alt="" /></a>
-                                  <a href="#" class="m-b-5"><img
-                                          src="https://bootdey.com/img/Content/avatar/avatar5.png"
-                                          alt="" /></a>
-                                  <a href="#" class="m-b-5"><img
-                                          src="https://bootdey.com/img/Content/avatar/avatar6.png"
-                                          alt="" /></a>
-                                  <a href="#" class="m-b-5"><img
-                                          src="https://bootdey.com/img/Content/avatar/avatar7.png"
-                                          alt="" /></a>
-                                  <a href="#" class="m-b-5"><img
-                                          src="https://bootdey.com/img/Content/avatar/avatar8.png"
-                                          alt="" /></a>
-                                  <a href="#" class="m-b-5"><img
-                                          src="https://bootdey.com/img/Content/avatar/avatar1.png"
-                                          alt="" /></a>
-                                  <a href="#" class="m-b-5"><img
-                                          src="https://bootdey.com/img/Content/avatar/avatar2.png"
-                                          alt="" /></a>
+                                          src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="" /></a>
+
                               </li>
                           </ul>
                       </div>

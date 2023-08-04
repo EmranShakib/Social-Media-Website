@@ -41,47 +41,57 @@
                          </div>
                      </div>
                  </div>
-
+                <h4 class="text-center mt-4 text-success">Your Favourite Event</h4>
+                <hr>
                  <div class="col-12 bg-info  ">
                      <div class="row">
                          <section style="background-color:white;">
                              <div class="container py-5">
                                  <div class="row ">
-                                     <div class="col-md-4 col-lg-4 col-xl-4 mb-3">
-                                         <div class="card text-black">
-                                             <span class="badge bg-primary w-25 mt-2">July 2023</span>
+                                     @foreach ($favourites as $favourite)
+                                         <div class="col-md-6 col-lg-6 col-xl-6 mb-3">
+                                             <div class="card text-black">
+                                                 <span
+                                                     class="badge bg-danger w-25 mt-2 shadow p-2">{{ $favourite->event->date }}</span>
 
-                                             <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/3.webp"
-                                                 class="card-img-top" alt="Apple Computer" />
+                                                 <img src="{{ asset('storage/image/events/' . $favourite->event->banner_image) }}"
+                                                     class="card-img-top" alt="Apple Computer" />
 
-                                             <div class="card-body">
-                                                 {{-- <div class="text-center">
+                                                 <div class="card-body">
+                                                     {{-- <div class="text-center">
                                                      
                                                  </div> --}}
-                                                 <div>
-                                                     <div class="">
-                                                         <span class="text-danger">Sports</span>
+                                                     <div>
+                                                         <div class="">
+                                                             <span
+                                                                 class="text-danger">{{ $favourite->event->category->title }}</span>
+                                                         </div>
+                                                         <div class="">
+                                                             <h6>{{ $favourite->event->title }}</h6>
+                                                         </div>
+                                                         <div class="">
+                                                             <span>{{ $favourite->event->start_time }}-
+                                                                 {{ $favourite->event->end_time }}</span>
+                                                         </div>
+                                                         <div class="">
+                                                             <span>Dhaka</span>
+                                                         </div>
+                                                         <div class="pt-2">
+                                                             <a href="{{ route('events.show', ['event' => $favourite->event->id]) }}"
+                                                                 class="btn btn-outline-dark btn-sm">More Details</a>
+                                                            
+                                                         </div>
                                                      </div>
-                                                     <div class="">
-                                                         <h6>Internation Sport Conference in 2021</h6>
+                                                     <div class="d-flex justify-content-end total font-weight-bold">
+
+                                                         <i class="fa-regular fa-bell fa-xl"></i>
+
+
                                                      </div>
-                                                     <div class="">
-                                                         <span>12:00 AM - 2:00 PM</span>
-                                                     </div>
-                                                     <div class="">
-                                                         <span>Dhaka</span>
-                                                     </div>
-                                                     <div class="">
-                                                         <button class="btn btn-outline-dark btn-sm">More
-                                                             Details</button>
-                                                     </div>
-                                                 </div>
-                                                 <div class="d-flex justify-content-end total font-weight-bold">
-                                                     <i class="fa-regular fa-bell fa-xl"></i>
                                                  </div>
                                              </div>
                                          </div>
-                                     </div>
+                                     @endforeach
 
 
 
@@ -93,9 +103,9 @@
 
              </div>
 
-             
+
              {{-- Right Side --}}
-            
+
 
 
          </div>

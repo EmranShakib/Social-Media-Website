@@ -5,12 +5,13 @@ namespace App\Http\Controllers\Frontend;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Mail\FriendInvitation;
+use App\Models\AcceptInvite;
 use App\Models\FriendInvite;
 use App\Models\User;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\Session;
 class FriendController extends Controller
 {
     /**
@@ -18,7 +19,16 @@ class FriendController extends Controller
      */
     public function index()
     {
-       return view('frontend.friends.friend_page');
+
+       $friends=FriendInvite::where('email',Auth::user()->email)->where('accepted',1)->get();
+       $acceptfrineds = AcceptInvite::where('invite_id', Auth::user()->id)->get();
+       $friendsCount=$friends->count();
+    
+        $acceptfrinedsCount= $acceptfrineds->count();
+
+        $friendsNumber = $acceptfrinedsCount + $friendsCount;
+        
+       return view('frontend.friends.friend_page',compact('friends', 'acceptfrineds', 'friendsNumber'));
     }
 
     /**
@@ -69,15 +79,24 @@ class FriendController extends Controller
 
     public function acceptInvitation(Request $request, $email, $id)
     {
-          $checkUser=User::where('email',$email)->count();
+        
+          $checkUserCount=User::where('email',$email)->count();
 
-          if($checkUser <= 0)
+          if($checkUserCount <=0)
           {
-              return redirect()->route('register');
+
+             
+              return redirect()->route('register')->with('user_id',$id);
           }
           else
           {
             $updateInvit = FriendInvite::where('user_id', $id)->where('email',$email)->first();
+            $checkUser = User::where('email', $email)->first();
+            $acceptInvite=AcceptInvite::create([
+                'user_id'=>$checkUser->id,
+                'invite_id'=>$id
+            ]);
+            
 
             $updateInvit->update([
                 'accepted' => true

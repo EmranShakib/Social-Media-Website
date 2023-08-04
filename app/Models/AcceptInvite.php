@@ -5,11 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class FriendInvite extends Model
+class AcceptInvite extends Model
 {
     use HasFactory;
+
     protected $fillable=[
-        'user_id','email','accepted'
+
+        'user_id','invite_id'
     ];
 
     public function user()
