@@ -83,14 +83,60 @@
                                                              <button class="btn btn-sm btn-outline-dark favouriteBtn"
                                                                  data-id={{ $event->id }}> Add Favourite<i
                                                                      class="fas fa-heart fa-xl ms-2 text-danger"></i></button>
+
                                                          </div>
                                                      </div>
-                                                     <div class="d-flex justify-content-end total font-weight-bold">
 
-                                                         <i class="fa-regular fa-bell fa-xl"></i>
 
+                                                     <div class="d-flex justify-content-between total font-weight-bold">
+
+
+                                                         <div class="mt-2">
+                                                             <a class="btn btn-outline-primary btn-sm commentData"
+                                                                 data-bs-toggle="collapse" href="#collapseExample"
+                                                                 role="button" aria-expanded="false"
+                                                                 aria-controls="collapseExample" data-id="{{ $event->id }}">
+                                                                 <i class="fas fa-comment fs-lg"></i>
+                                                             </a>
+                                                         </div>
+                                                         <div>
+                                                             <i class="fa-regular fa-bell fa-xl"></i>
+                                                         </div>
 
                                                      </div>
+                                                     <div class="collapse mt-2" id="collapseExample">
+                                                         <div class="card card-body"
+                                                             style="max-height: 200px; overflow-y: auto; scrollbar-width: thin;">
+                                                             <div class="table-responsive">
+                                                                 <table class="table">
+                                                                     <tbody id="table-body">
+                                                                         
+                                                                         
+                                                                         <!-- Add more rows here as needed -->
+                                                                     </tbody>
+                                                                 </table>
+                                                             </div>
+
+                                                         </div>
+                                                         <form>
+                                                            
+                                                             <div class="form-floating mb-3 mt-2 shadow">
+                                                                 <input type="text" class="form-control"
+                                                                     id="comment" name="comment" required>
+                                                                 <label for="comment">Write Comment</label>
+                                                                
+                                                               
+                                                                 <div class="justify-content-center d-flex mt-2 ">
+                                                                     <button
+                                                                         class="btn btn-success btn-sm text-center mb-2 commentBtn"
+                                                                         data-id="{{ $event->id }}">Sent <i
+                                                                             class="fas fa-paper-plane"></i></button>
+                                                                 </div>
+                                                             </div>
+                                                         </form>
+                                                     </div>
+
+
                                                  </div>
                                              </div>
                                          </div>
@@ -177,5 +223,6 @@
      </div>
      </div>
      <x-frontend.ajax.favourite_ajax />
+     <x-frontend.ajax.comment_ajax />
 
  </x-frontend.master>

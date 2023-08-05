@@ -10,6 +10,7 @@ use \App\Http\Controllers\Frontend\PageController;
 use \App\Http\Controllers\Frontend\EventController;
 use \App\Http\Controllers\Frontend\FriendController;
 use \App\Http\Controllers\Frontend\FavouriteController;
+ 
 use App\Http\Controllers\Admin\CategoryController;
 
 /*
@@ -69,7 +70,9 @@ Route::get('/accept-invitation/{email}/{id}', [FriendController::class, 'acceptI
 Route::get('/favourites', [FavouriteController::class, 'index'])->name('favourites.index')->middleware('auth');
 Route::post('/favourites', [FavouriteController::class, 'store'])->name('favourites.store')->middleware('auth');
 
-
+// comments
+Route::resource('comments', CommentController::class)->middleware('auth');
+Route::post('/commentdata',[CommentController::class,'comment'])->name('comment.data')->middleware('auth');
 // profile
 Route::get('/profiles',[ProfileController::class,'index'])->name('profiles.index')->middleware('auth');
 Route::patch('/profiles/update/{id}',[ProfileController::class,'update'])->name('profiles.update')->middleware('auth');
@@ -83,7 +86,6 @@ Route::get('/favourites/page',[PageController::class,'favourite'])->name('favour
 
 // Posts
 Route::resource('posts', PostController::class);
-Route::post('posts/comment',[CommentController::class,'store'])->name('comments.store')->middleware('auth');
-
+ 
 
 require __DIR__.'/auth.php';
