@@ -8,14 +8,15 @@
          }
      });
  </script>
+ 
  <script>
      $(document).ready(function() {
 
          // comment index
          $(document).on('click', '.commentData', function(e) {
              e.preventDefault();
-                let eventId = $(this).data('id');
-                 
+             let eventId = $(this).data('id');
+
 
              $.ajax({
                  url: "{{ route('comment.data') }}",
@@ -25,17 +26,17 @@
                  },
                  success: function(res) {
                      if (res.status == 'success') {
-                          
-                        console.log(res.status);
+
+                         
 
                          let tableBody = $("#table-body");
-                         
-                          // Clear any existing rows
+                             tableBody.empty();
+                         // Clear any existing rows
                          $.each(res.data, function(index, row) {
                              var newRow = $("<tr></tr>");
 
                              newRow.append("<td>" + row.comment + "</td>");
-                           
+
 
                              tableBody.append(newRow);
                          });
@@ -45,9 +46,13 @@
              });
 
          });
+
+
          // comment store 
+            
          $(document).on('click', '.commentBtn', function(e) {
              e.preventDefault();
+           
              let eventId = $(this).data('id');
              let comment = $('#comment').val();
              $.ajax({
@@ -58,25 +63,32 @@
                      comment: comment
                  },
                  success: function(res) {
-                     if (res.status == 'success') {
 
-                         if (res.status == 'success') {
+                        if (res.status == 'success') {
 
-                              $('#comment').val('');
-                           let tableBody = $("#table-body");
+                         
+                        
+                         $("#comment").val('');
+                         let tableBody = $("#table-body");
 
-                            
-                         }
+                         // Clear any existing rows
+                          tableBody.empty();
+
+                         $.each(res.data, function(index, row) {
+                             var newRow = $("<tr></tr>");
+
+                             newRow.append("<td>" + row.comment + "</td>");
+
+
+                             tableBody.append(newRow);
+                         });
+
                      }
+
                  }
              });
+
+
          });
-
-        
-         
-
-
-
-
      });
  </script>

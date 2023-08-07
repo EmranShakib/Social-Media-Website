@@ -37,6 +37,7 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
+      
         $comment= new Comment();
 
         $comment->user_id=Auth::user()->id;
@@ -44,7 +45,8 @@ class CommentController extends Controller
         $comment->comment=$request->comment;
 
         $comment->save();
-        return response()->json(['status' => 'success']);
+        $comment = Comment::where('event_id', $request->eventId)->latest()->get();
+        return response()->json(['status' => 'success', 'data' => $comment]);
     }
 
     /**
