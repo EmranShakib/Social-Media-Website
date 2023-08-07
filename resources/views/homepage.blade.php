@@ -7,18 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>home</title>
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0/css/bootstrap.min.css"
-        integrity="sha384-pzjw8f+ua9yNnWRPrD9JQjqZfWXjjd8qcVGm+gCdFxvDH89L6p2nFAwA+xE5eZBM" crossorigin="anonymous">
+ 
 
     <!-- font awesome cdn link  -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-
-
+ 
     <!-- custom css file link  -->
     <link rel="stylesheet" href="css/style.css">
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
 
 
 
@@ -44,7 +40,7 @@
                                     <h1><strong>Imagine a place....</strong></h1>
 
 
-                                    <p style="color: #272424" class="fs-4">Where you can tell only your friends and family
+                                    <p style="color: #272424" class="fs-4" >Where you can tell only your friends and family
                                         about the places<br>
                                         you spent your weekends, holidays and time. A social network that<br>
                                         enhances real life connections you have with people you love</p>
@@ -236,9 +232,7 @@
 
 
 
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0/js/bootstrap.min.js"
-        integrity="sha384-H+ozjHcd9t+Ydtu8z+eOtRfPfm6FZ5VfE9u7Jb2ktLZ9bcXl+xCeQ4tkOjj6qQ0q" crossorigin="anonymous">
-    </script>
+    
 </body>
 
 </html>
