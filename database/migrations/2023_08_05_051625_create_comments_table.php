@@ -16,6 +16,8 @@ return new class extends Migration
             $table->unsignedBigInteger('event_id');
             $table->unsignedBigInteger('user_id');
             $table->text('comment');
+            $table->string('name')->nullable();
+            $table->string('profile')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

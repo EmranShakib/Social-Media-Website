@@ -29,14 +29,13 @@
 
                          
 
-                         let tableBody = $("#table-body");
+                         let tableBody = $("#table-body" + eventId);
                              tableBody.empty();
                          // Clear any existing rows
                          $.each(res.data, function(index, row) {
                              var newRow = $("<tr></tr>");
-
+                            newRow.append("<th>" + row.name + "</th>");
                              newRow.append("<td>" + row.comment + "</td>");
-
 
                              tableBody.append(newRow);
                          });
@@ -50,11 +49,13 @@
 
          // comment store 
             
+
          $(document).on('click', '.commentBtn', function(e) {
              e.preventDefault();
            
              let eventId = $(this).data('id');
-             let comment = $('#comment').val();
+             let comment = $('#insertComment'+ eventId).val();
+             console.log(eventId);
              $.ajax({
                  url: "{{ route('comments.store') }}",
                  method: 'post',
@@ -68,8 +69,8 @@
 
                          
                         
-                         $("#comment").val('');
-                         let tableBody = $("#table-body");
+                         $('#insertComment'+ eventId).val('');
+                         let tableBody = $("#table-body" + eventId);
 
                          // Clear any existing rows
                           tableBody.empty();
@@ -77,6 +78,7 @@
                          $.each(res.data, function(index, row) {
                              var newRow = $("<tr></tr>");
 
+                             newRow.append("<th>" + row.name + "</th>");
                              newRow.append("<td>" + row.comment + "</td>");
 
 

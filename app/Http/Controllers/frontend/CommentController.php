@@ -21,7 +21,8 @@ class CommentController extends Controller
 
     public function index()
     {
-
+          $comments=Comment::latest()->get();
+          return view('admin.comments.index',compact('comments'));
     }
 
     /**
@@ -42,9 +43,12 @@ class CommentController extends Controller
 
         $comment->user_id=Auth::user()->id;
         $comment->event_id=$request->eventId;
+        $comment->name=Auth::user()->name;
+        $comment->profile=Auth::user()->profile_image;
         $comment->comment=$request->comment;
 
         $comment->save();
+
         $comment = Comment::where('event_id', $request->eventId)->latest()->get();
         return response()->json(['status' => 'success', 'data' => $comment]);
     }
@@ -78,6 +82,7 @@ class CommentController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Comment::findOrFail($id)->delete();
+        return redirect()->back()->with('success','Comment deleted successfully');
     }
 }

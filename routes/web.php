@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Frontend\DashboardController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 use \App\Http\Controllers\Frontend\ProfileController;
-use \App\Http\Controllers\Frontend\PostController;
+use \App\Http\Controllers\Admin\BLogController;
 use \App\Http\Controllers\Frontend\CommentController;
 use \App\Http\Controllers\Frontend\PageController;
 use \App\Http\Controllers\Frontend\EventController;
@@ -12,6 +12,7 @@ use \App\Http\Controllers\Frontend\FriendController;
 use \App\Http\Controllers\Frontend\FavouriteController;
  
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -66,26 +67,33 @@ Route::resource('friends', FriendController::class)->middleware('auth');
 Route::post('/invite-friend', [FriendController::class, 'inviteFriend'])->name('invite.friend')->middleware('auth');
 Route::get('/accept-invitation/{email}/{id}', [FriendController::class, 'acceptInvitation'])->name('accept.invitation');
 
-//favourite 
+//user favourite 
 Route::get('/favourites', [FavouriteController::class, 'index'])->name('favourites.index')->middleware('auth');
 Route::post('/favourites', [FavouriteController::class, 'store'])->name('favourites.store')->middleware('auth');
 
-// comments
-Route::resource('comments', CommentController::class)->middleware('auth');
+// comments for user
 Route::post('/commentdata',[CommentController::class,'comment'])->name('comment.data')->middleware('auth');
-// profile
+Route::post('/comments',[CommentController::class,'store'])->name('comments.store')->middleware('auth');
+
+// comments for admin
+Route::get('/comments', [CommentController::class, 'index'])->name('comments.index')->middleware('auth','isAdmin');
+Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy')->middleware('auth','isAdmin');
+
+//user profile
 Route::get('/profiles',[ProfileController::class,'index'])->name('profiles.index')->middleware('auth');
 Route::patch('/profiles/update/{id}',[ProfileController::class,'update'])->name('profiles.update')->middleware('auth');
 Route::post('/changepassword',[ProfileController::class,'password'])->name('change.password')->middleware('auth');
 
-// page
+//user page
 Route::get('/profiles/page',[PageController::class,'profile'])->name('profiles.page')->middleware('auth');
 Route::get('/favourites/page',[PageController::class,'favourite'])->name('favourities.page')->middleware('auth');
 
- 
+//admin users 
+Route::resource('users',UserController::class)->middleware('auth','isAdmin'); 
 
-// Posts
-Route::resource('posts', PostController::class);
+// blogs
+Route::get('/blog-page',[BLogController::class,'blog_page'])->name('blog.page')->middleware('auth');
+Route::resource('blogs', BlogController::class)->middleware('auth','isAdmin');
  
 
 require __DIR__.'/auth.php';

@@ -94,56 +94,71 @@
 
                                                          <div class="mt-2">
 
-                                                             <a class="btn btn-outline-primary btn-sm commentData"
-                                                                 data-bs-toggle="collapse" href="#comment{{ $event->id }}"
-                                                                 role="button" aria-expanded="false"
-                                                                 aria-controls="collapseExample" data-id="{{ $event->id }}">
-                                                                 <i class="fas fa-comment fs-lg"></i>
-                                                             </a>
+                                                             <!-- Button trigger modal -->
+                                                             <button type="button"
+                                                                 class="btn btn-primary btn-sm commentData"
+                                                                 data-bs-toggle="modal"
+                                                                 data-bs-target="#commentId{{ $event->id }}"
+                                                                 data-id="{{ $event->id }}">
+                                                                 <i class="fas fa-comment comment-icon"></i>
+                                                             </button>
 
+                                                             <!-- Modal -->
+                                                             <div class="modal fade comment"
+                                                                 id="commentId{{ $event->id }}" tabindex="-1"
+                                                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                 <div class="modal-dialog">
+                                                                     <div class="modal-content">
+                                                                         <div class="modal-header">
+                                                                             <h1 class="modal-title fs-5"
+                                                                                 id="exampleModalLabel">Comment</h1>
+                                                                             <button type="button" class="btn-close"
+                                                                                 data-bs-dismiss="modal"
+                                                                                 aria-label="Close"></button>
+                                                                         </div>
+                                                                         <div class="modal-body"
+                                                                             style="max-height:300px;overflow-y:auto">
+                                                                             <table class="table">
+
+                                                                                 <tbody id="table-body{{ $event->id }}">
+
+
+
+                                                                                     <!-- Add more rows as needed -->
+                                                                                 </tbody>
+                                                                             </table>
+                                                                         </div>
+                                                                         <div class="px-2">
+                                                                             <div class="form-floating mb-3">
+                                                                                 <input type="text"
+                                                                                     class="form-control shadow"
+                                                                                     id="insertComment{{ $event->id }}"
+                                                                                    >
+                                                                                 <label for="insertComment">Write comment here..</label>
+                                                                             </div>
+                                                                            <div class="mb-2 d-flex justify-content-center">
+                                                                                 <button class="btn btn-primary btn-sm commentBtn" data-id="{{ $event->id }}">Sent <i
+                                                                                     class="fas fa-paper-plane"></i>
+                                                                             </button>
+                                                                            </div>
+                                                                         </div>
+                                                                     </div>
+                                                                 </div>
+                                                             </div>
+                                                             <!-- /Modal -->
                                                          </div>
                                                          <div>
                                                              <i class="fa-regular fa-bell fa-xl"></i>
                                                          </div>
 
                                                      </div>
-                                                     <div class="collapse mt-2" id="comment{{ $event->id }}">
-                                                         <div class="card card-body"
-                                                             style="max-height: 200px; overflow-y: auto; scrollbar-width: thin;">
-                                                             <div class="table-responsive">
-                                                                 <table class="table">
-                                                                     <tbody id="table-body">
-                                                                         
-                                                                         
-                                                                         <!-- Add more rows here as needed -->
-                                                                     </tbody>
-                                                                 </table>
-                                                             </div>
 
-                                                         </div>
-                                                         <form>
-                                                            
-                                                             <div class="form-floating mb-3 mt-2 shadow">
-                                                                 <input type="text" class="form-control"
-                                                                     id="comment" name="comment" required>
-                                                                 <label for="comment">Write Comment</label>
-                                                                
-                                                               
-                                                                 <div class="justify-content-center d-flex mt-2 ">
-                                                                     <button
-                                                                         class="btn btn-success btn-sm text-center mb-2 commentBtn"
-                                                                         data-id="{{ $event->id }}">Sent <i
-                                                                             class="fas fa-paper-plane"></i></button>
-                                                                 </div>
-                                                             </div>
-                                                         </form>
-                                                     </div>
 
 
                                                  </div>
                                              </div>
                                          </div>
-                                         <x-frontend.ajax.comment_ajax/>
+                                        
                                      @endforeach
 
 
@@ -227,6 +242,6 @@
      </div>
      </div>
      <x-frontend.ajax.favourite_ajax />
-     
+ <x-frontend.ajax.comment_ajax/>
 
  </x-frontend.master>

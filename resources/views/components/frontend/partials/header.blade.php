@@ -13,6 +13,7 @@
                    <li><a href="{{ route('friends.index') }}">Friends</a></li>
                    <li><a href="{{ route('favourites.index') }}">Favourites</a></li>
                    <li><a href="{{ route('profiles.page') }}">Profile</a></li>
+                   <li><a href="{{ route('blog.page') }}">Blog</a></li>
 
                 
 
