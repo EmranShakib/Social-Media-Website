@@ -40,9 +40,10 @@
 
 
   <script src="https://kit.fontawesome.com/496c26838e.js" crossorigin="anonymous"></script>
-
     
-
+    {{-- <script src="{{ asset('js/boostrap.min.js') }}"></script> --}}
+    @stack('data')
+ 
 </body>
 
 </html>

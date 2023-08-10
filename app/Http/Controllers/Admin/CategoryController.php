@@ -41,4 +41,17 @@ class CategoryController extends Controller
         $deleteBook = Category::find($request->categoryId)->delete();
         return response()->json(['status' => 'success']);
     }
+
+    public function update(Request $request, $id)
+    {
+        $category=Category::findOrFail($id);
+
+        $category->update([
+          'title'=>$request->title,
+          'description'=>$request->description,
+          'is_active'=>$request->isActive,
+        ]);
+
+        return redirect()->back()->with('success','Category updated successfully');
+    }
 }

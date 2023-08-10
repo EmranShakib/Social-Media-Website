@@ -26,6 +26,7 @@ class DashboardController extends Controller
     }
     public function dashboard()
     {
-        return view('admin.dashboard');
+        $events = Event::latest()->get();
+        return view('admin.dashboard',compact('events'));
     }
 }

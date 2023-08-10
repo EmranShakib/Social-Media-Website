@@ -48,7 +48,7 @@ Route::middleware(['auth','isAdmin'])->group(function () {
 
 
     Route::get('/dashboard1', [DashboardController::class, 'dashboard'])->name('dashboard1');
-    Route::resource('categories', CategoryController::class)->only(['index','store']);
+    Route::resource('categories', CategoryController::class)->only(['index','store','update']);
     Route::post('/categories/delete',[CategoryController::class,'delete'])->name('categories.delete');
 });
 

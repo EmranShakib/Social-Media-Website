@@ -12,8 +12,9 @@
                      <li class="breadcrumb-item"><a href="{{ route('dashboard1') }}">Dashboard</a></li>
                      <li class="breadcrumb-item active">EventList</li>
                  </ol>
-                 <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#bookModal">
-                     Add Event
+                 <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                     data-bs-whatever="@mdo" style="">
+                     <i class="fa-solid fa-calendar-days fa-beat"></i> Create Event
                  </button>
                  {{-- <button id="addCategoryBtn" class="btn btn-primary btn-sm">Add Category</button> --}}
              </nav>
@@ -142,7 +143,7 @@
 
                                                  </div>
                                              </div>
-
+                                         
 
                                      </div>
                                      <div class="modal-footer">
@@ -151,6 +152,7 @@
                                          <button type="submit" class="btn btn-primary">Save
                                              changes</button>
                                      </div>
+                                     </form>
                                  </div>
                              </div>
                          </div>
@@ -255,6 +257,6 @@
 
 
 
-
+     <x-frontend.model.event_form :categories="$categories" />
 
  </x-admin.layout.master>

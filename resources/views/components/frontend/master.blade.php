@@ -38,7 +38,8 @@
 
     <script src="https://kit.fontawesome.com/496c26838e.js" crossorigin="anonymous"></script>
 
-    
+    @stack('profile')
+    @stack('blogs')
 
 
 </body>
